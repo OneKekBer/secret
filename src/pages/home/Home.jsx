@@ -1,6 +1,11 @@
+import { useState } from 'react'
 
 
 const Home = () => {
+   const [isPopupOpen, setIsPopupOpen] = useState(false)
+
+
+
    const content = [
       {
          title: 'хлеб духмяный',
@@ -51,7 +56,18 @@ const Home = () => {
    ]
 
    return (
-      <div className='w-full h-full bg-blue-50'>
+      <div className='w-full relative h-full bg-blue-50'>
+         {isPopupOpen && <div className='fixed w-[500px] left-1/2 transform -translate-x-1/2 px-4 bg-slate-300 z-10 h-[300px]'>
+            <div onClick={() => { setIsPopupOpen(false) }}>close</div>
+            <form className='flex gap-5 flex-col'>
+               <input placeholder='номер карты' type="text" />
+               <input placeholder='cvc' type="text" />
+               <input placeholder='имя' type="text" />
+               <button className='text-center w-full h-[30px] cursor-pointer hover:bg-yellow-50 duration-200 bg-yellow-100 rounded-md'>купить</button>
+            </form>
+
+         </div>}
+         <div className=''></div>
          <div className='w-[1000px] mx-auto'>
             {/* <div className='flex items-center justify-between py-5'>
                <div className='flex items-center gap-5'>
@@ -85,7 +101,7 @@ const Home = () => {
                            <div className='px-2 cursor-pointer hover:border-gray-400 hover:text-gray-400 duration-300  text-center flex items-center justify-center border border-black '>1</div>
                            <div className='px-2 cursor-pointer hover:border-gray-400 hover:text-gray-400 duration-300 rounded-r-lg text-center flex items-center justify-center border border-black '>-</div>
                         </div>
-                        <button className='text-center w-full h-[30px] cursor-pointer hover:bg-yellow-50 duration-200 bg-yellow-100 rounded-md'>купить</button>
+                        <button onClick={() => { setIsPopupOpen(true) }} className='text-center w-full h-[30px] cursor-pointer hover:bg-yellow-50 duration-200 bg-yellow-100 rounded-md'>купить</button>
 
                      </div>
                   )
