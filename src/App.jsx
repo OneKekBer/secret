@@ -1,31 +1,21 @@
-
+import Header from './components/common/Header'
+import About from './pages/about/About'
+import Home from './pages/home/Home'
+import { Route, Routes } from 'react-router-dom'
 function App() {
-
-  const content = [
-    {
-      title: 'хлеб духмынй'
-    },
-    {
-      title: 'хлеб чесночный'
-    },
-    {
-      title: 'хлеб медовый'
-    }
-  ]
-
   return (
-    <div className='w-full h-screen bg-slate-200'>
-      <div className='flex p-14 justify-between '>
-        {content.map((item, i) => {
+    <div>
 
 
-          return (
-            <div key={i} className='w-[300px] p-5 h-[500px] bg-slate-400 shadow-xl rounded-[20px]'>{item.title}</div>
-          )
-        })}
-      </div>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+
+      </Routes>
     </div>
   )
+
 }
 
 export default App;
